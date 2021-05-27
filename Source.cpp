@@ -1,6 +1,7 @@
 #include <string>
 #include <random>
 #include <vector>
+#include <iostream>
 
 struct Object {
 	std::string name;
@@ -23,15 +24,29 @@ int main() {
 
 	std::vector<Object> Monsters;
 
-	std::uniform_int_distribution<double> createMonsters(1.0, 3.0);
-
+	std::uniform_real_distribution<double> createMonsters(1.0, 3.0);
 
 	for (int i = 0; i < std::max(1, (int)createMonsters(engine)); i++) {
 
-		std::string monName = "Monster" + std::string(i);
+		Monsters.push_back({ "Monster" + i, std::max(1, (int)strength(engine)), std::max(1, (int)health(engine)) });
 
-		Monsters.push_back("Monster" + std::string(i), std::max(1, (int)strength(engine)), std::max(1, (int)health(engine)));
 	}
+
+	while (Player.health > 0 || Monsters.size() != 0) {
+
+		std::cout << Player.name << std::endl;
+		std::cout << "Health: " << Player.health << std::endl;
+
+	}
+
+	if (Player.health <= 0) {
+		std::cout << "Game Over. YOU DIED!";
+	}
+	else {
+		std::cout << "You have fended off the monsters! YOU WIN!";
+	}
+
+}
 
 
 
