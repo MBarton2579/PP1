@@ -48,7 +48,9 @@ int main() {
 		char action;
 		std::cin >> action;
 
+		switch (action) {
 
+		}
 	}
 
 	if (Player.health <= 0) {
