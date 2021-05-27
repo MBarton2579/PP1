@@ -26,6 +26,12 @@ int main() {
 	std::uniform_int_distribution<double> createMonsters(1.0, 3.0);
 
 
+	for (int i = 0; i < std::max(1, (int)createMonsters(engine)); i++) {
+
+		std::string monName = "Monster" + std::string(i);
+
+		Monsters.push_back("Monster" + std::string(i), std::max(1, (int)strength(engine)), std::max(1, (int)health(engine)));
+	}
 
 
 
