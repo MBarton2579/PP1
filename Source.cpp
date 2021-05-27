@@ -24,11 +24,11 @@ int main() {
 
 	std::vector<Object> Monsters;
 
-	std::uniform_real_distribution<double> createMonsters(1.0, 3.0);
+	std::uniform_int_distribution<int> createMonsters(1, 3);
 
-	for (int i = 0; i < std::max(1, (int)createMonsters(engine)); i++) {
+	for (int i = 0; i < (int)createMonsters(engine); i++) {
 
-		Monsters.push_back({ "Monster" + i, std::max(1, (int)strength(engine)), std::max(1, (int)health(engine)) });
+		Monsters.push_back({ "Monster", std::max(1, (int)strength(engine)), std::max(1, (int)health(engine)) });
 
 	}
 
@@ -36,6 +36,18 @@ int main() {
 
 		std::cout << Player.name << std::endl;
 		std::cout << "Health: " << Player.health << std::endl;
+
+		for (int j = 0; j < Monsters.size(); j++)            //Code from http://cplusplus.com/forum/beginner/13616/
+		{
+			std::cout << Monsters[j].name << " " << j + 1 << std::endl;
+			std::cout << "Health: " << Monsters[j].health << std::endl;
+		}
+
+		std::cout << "Do you want to (A)ttack or (H)eal?" << std::endl;
+
+		char action;
+		std::cin >> action;
+
 
 	}
 
